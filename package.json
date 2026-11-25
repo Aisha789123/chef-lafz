@@ -1,0 +1,11 @@
+{
+  "name": "chef-lafz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chef Lafz — English kitchen words with pictures, sound and Urdu. No build step; this file only tells Node that the scripts use ES modules.",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "export-svgs": "node scripts/export-svgs.js"
+  }
+}

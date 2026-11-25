@@ -1,0 +1,18 @@
+{
+  "name": "Chef Lafz · شیف لفظ",
+  "short_name": "Chef Lafz",
+  "description": "English kitchen words for chefs, with pictures, sound and Urdu.",
+  "lang": "ur",
+  "dir": "rtl",
+  "start_url": "./index.html#/home",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF6E9",
+  "theme_color": "#C0392B",
+  "categories": ["education", "food"],
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icons/maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

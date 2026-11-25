@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make PNG icons</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 640px; margin: 24px auto; padding: 0 16px; line-height: 1.5; }
+  canvas { border: 1px solid #ccc; margin: 6px; width: 128px; height: 128px; }
+  button { font-size: 18px; padding: 10px 16px; }
+</style>
+</head>
+<body>
+<h1>Make PNG app icons</h1>
+<p>Open this page with Live Server (so it can read <code>../icons/*.svg</code>), then press the button.
+Three PNG files download. Put them in the <code>icons/</code> folder, then add these lines to the
+<code>"icons"</code> list in <code>manifest.json</code>:</p>
+<pre>{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+{ "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+{ "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }</pre>
+<button id="go">Make and download PNGs</button>
+<div id="out"></div>
+<script>
+async function make(src, size, name) {
+  const img = new Image();
+  img.src = src;
+  await img.decode();
+  const c = document.createElement('canvas');
+  c.width = c.height = size;
+  c.getContext('2d').drawImage(img, 0, 0, size, size);
+  document.getElementById('out').appendChild(c);
+  const a = document.createElement('a');
+  a.download = name;
+  a.href = c.toDataURL('image/png');
+  a.click();
+}
+document.getElementById('go').onclick = async () => {
+  await make('../icons/icon.svg', 192, 'icon-192.png');
+  await make('../icons/icon.svg', 512, 'icon-512.png');
+  await make('../icons/maskable.svg', 512, 'maskable-512.png');
+};
+</script>
+</body>
+</html>

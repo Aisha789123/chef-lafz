@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chef Lafz · شیف لفظ</title>
+  <meta name="description" content="Learn the English words a chef needs — with pictures, sound and Urdu. شیف بننے کے لیے انگریزی الفاظ سیکھیں۔">
+  <meta name="theme-color" content="#C0392B">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Chef Lafz">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preload" href="fonts/NotoNastaliqUrdu-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <a class="visually-hidden" href="#app">Skip to content</a>
+  <header class="topbar" id="topbar">
+    <button class="icon-btn back-btn" id="backBtn" type="button" hidden aria-label="Back"><span class="arrow" aria-hidden="true">←</span></button>
+    <h1 class="title" id="topTitle"><span class="title-icon" aria-hidden="true">👨‍🍳</span><span class="title-text">Chef Lafz</span></h1>
+    <button class="streak-chip" id="streakChip" type="button" aria-expanded="false" aria-controls="streakTip">
+      <span aria-hidden="true">🔥</span><span id="streakText">0</span>
+    </button>
+    <div class="lang-toggle" role="group" aria-label="Language / زبان">
+      <button type="button" data-lang="ur" lang="ur" aria-pressed="true">اردو</button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+  <div class="streak-tip" id="streakTip" role="status" hidden></div>
+
+  <main id="app" tabindex="-1" aria-live="polite">
+    <div class="loading" aria-label="Loading">👨‍🍳</div>
+  </main>
+
+  <nav class="bottom-nav" id="bottomNav" aria-label="Main menu">
+    <a href="#/home" data-tab="home"><span class="nav-ico" aria-hidden="true">🏠</span><span class="nav-lbl" data-t="navHome">Home</span></a>
+    <a href="#/learn" data-tab="learn"><span class="nav-ico" aria-hidden="true">📚</span><span class="nav-lbl" data-t="navLearn">Learn</span></a>
+    <a href="#/today" data-tab="practice"><span class="nav-ico" aria-hidden="true">▶️</span><span class="nav-lbl" data-t="navPractice">Practice</span></a>
+    <a href="#/progress" data-tab="progress"><span class="nav-ico" aria-hidden="true">📊</span><span class="nav-lbl" data-t="navProgress">Progress</span></a>
+    <a href="#/settings" data-tab="settings"><span class="nav-ico" aria-hidden="true">⚙️</span><span class="nav-lbl" data-t="navSettings">Settings</span></a>
+  </nav>
+  <div class="stop-bar" id="stopBar" hidden>
+    <a class="btn btn-outline btn-block" id="stopBtn" href="#/home"><span class="emo" aria-hidden="true">✕</span><span data-t="stopPractice">Stop practice</span></a>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <noscript>
+    <p style="padding:20px;font-family:sans-serif">Chef Lafz needs JavaScript. Please open it in Chrome.</p>
+  </noscript>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

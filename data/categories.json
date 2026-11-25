@@ -1,0 +1,17 @@
+[
+  { "id": "phrases", "file": "phrases.json", "nameEn": "Kitchen phrases", "nameUr": "کچن کے جملے", "icon": "💬", "color": "#C0392B", "bg": "#FBE1DD" },
+  { "id": "tools", "file": "tools.json", "nameEn": "Tools & utensils", "nameUr": "اوزار اور برتن", "icon": "🥄", "color": "#4F6D7A", "bg": "#E1ECF0" },
+  { "id": "vegetables", "file": "vegetables.json", "nameEn": "Vegetables", "nameUr": "سبزیاں", "icon": "🥕", "color": "#3A8A43", "bg": "#E2F2DF" },
+  { "id": "spices", "file": "spices.json", "nameEn": "Spices & herbs", "nameUr": "مصالحے اور جڑی بوٹیاں", "icon": "🌿", "color": "#B35A1F", "bg": "#F8E6D6" },
+  { "id": "actions", "file": "actions.json", "nameEn": "Cooking actions", "nameUr": "پکانے کے کام", "icon": "🍳", "color": "#D35400", "bg": "#FCE7D6" },
+  { "id": "meat", "file": "meat.json", "nameEn": "Meat, chicken & fish", "nameUr": "گوشت، مرغی اور مچھلی", "icon": "🍗", "color": "#A93246", "bg": "#F7DFE3" },
+  { "id": "dairy", "file": "dairy.json", "nameEn": "Dairy & eggs", "nameUr": "دودھ کی چیزیں اور انڈے", "icon": "🧀", "color": "#2F78B7", "bg": "#DFEBF7" },
+  { "id": "grains", "file": "grains.json", "nameEn": "Grains, bread & store cupboard", "nameUr": "اناج، روٹی اور خشک سامان", "icon": "🍞", "color": "#B8860B", "bg": "#F7EDD2" },
+  { "id": "fruits", "file": "fruits.json", "nameEn": "Fruits", "nameUr": "پھل", "icon": "🍎", "color": "#D63A6A", "bg": "#FBE0E8" },
+  { "id": "equipment", "file": "equipment.json", "nameEn": "Kitchen equipment", "nameUr": "کچن کی مشینیں", "icon": "art:cat-equipment", "color": "#475569", "bg": "#E3E7EC" },
+  { "id": "cutting", "file": "cutting.json", "nameEn": "Cutting techniques", "nameUr": "کاٹنے کے طریقے", "icon": "🔪", "color": "#6D4C9F", "bg": "#ECE5F5" },
+  { "id": "measurements", "file": "measurements.json", "nameEn": "Measurements & temperature", "nameUr": "ناپ تول اور درجۂ حرارت", "icon": "⚖️", "color": "#12867F", "bg": "#DAF1EF" },
+  { "id": "jobs", "file": "jobs.json", "nameEn": "Kitchen jobs & stations", "nameUr": "کچن کی نوکریاں اور اسٹیشن", "icon": "👨‍🍳", "color": "#8B5A2B", "bg": "#F1E5D8" },
+  { "id": "hygiene", "file": "hygiene.json", "nameEn": "Hygiene & safety", "nameUr": "صفائی اور حفاظت", "icon": "🧼", "color": "#1F7FA8", "bg": "#DCEFF7" },
+  { "id": "taste", "file": "taste.json", "nameEn": "Taste & texture", "nameUr": "ذائقہ اور بناوٹ", "icon": "😋", "color": "#C2185B", "bg": "#F9E0EA" }
+]
