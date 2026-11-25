@@ -158,10 +158,26 @@ async function start() {
   registerSW();
 }
 
+const IS_LOCAL = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+
+// Local testing (Live Server etc.): never keep a service worker, so it can't take over other projects on the same port.
+async function removeLocalSW() {
+  try {
+    const regs = await navigator.serviceWorker.getRegistrations();
+    await Promise.all(regs.map((r) => r.unregister()));
+    if ('caches' in window) {
+      const keys = await caches.keys();
+      await Promise.all(keys.filter((k) => k.startsWith('chef-lafz-')).map((k) => caches.delete(k)));
+    }
+  } catch { /* nothing to clean */ }
+}
+
 function registerSW() {
   if (!('serviceWorker' in navigator) || location.protocol === 'file:') return;
+  if (IS_LOCAL) { removeLocalSW(); return; }
   const firstTime = !navigator.serviceWorker.controller;
-  navigator.serviceWorker.register('sw.js').then((reg) => {
+  // Scope './' keeps it inside the app's folder (/chef-lafz/ on GitHub Pages).
+  navigator.serviceWorker.register('sw.js', { scope: './' }).then((reg) => {
     reg.addEventListener('updatefound', () => {
       const w = reg.installing;
       if (!w) return;

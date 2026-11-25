@@ -1,6 +1,6 @@
 // Chef Lafz service worker: caches the whole app so it works offline after the first visit.
 // After changing any file, increase VERSION so phones download the new version.
-const VERSION = 'v2';
+const VERSION = 'v3';
 const CACHE = `chef-lafz-${VERSION}`;
 
 const CORE = [
@@ -19,7 +19,23 @@ const CORE = [
 // Optional files: cached if they exist (PNG icons are made later with scripts/make-icons.html).
 const OPTIONAL = ['icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png'];
 
+// On localhost / 127.0.0.1 (Live Server) this worker removes itself, so it never takes over other local projects.
+const IS_LOCAL = ['localhost', '127.0.0.1', '[::1]'].includes(self.location.hostname);
+if (IS_LOCAL) {
+  self.addEventListener('install', () => self.skipWaiting());
+  self.addEventListener('activate', (event) => {
+    event.waitUntil((async () => {
+      const keys = await caches.keys();
+      await Promise.all(keys.filter((k) => k.startsWith('chef-lafz-')).map((k) => caches.delete(k)));
+      await self.registration.unregister();
+      const wins = await self.clients.matchAll({ type: 'window' });
+      wins.forEach((c) => c.navigate(c.url));
+    })());
+  });
+}
+
 self.addEventListener('install', (event) => {
+  if (IS_LOCAL) return;
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE);
     await cache.addAll(CORE);
@@ -41,6 +57,7 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
+  if (IS_LOCAL) return;
   event.waitUntil((async () => {
     const keys = await caches.keys();
     await Promise.all(keys.filter((k) => k.startsWith('chef-lafz-') && k !== CACHE).map((k) => caches.delete(k)));
@@ -50,6 +67,7 @@ self.addEventListener('activate', (event) => {
 
 // Cache first (fast + offline). Same-origin files missing from the cache are fetched and stored.
 self.addEventListener('fetch', (event) => {
+  if (IS_LOCAL) return;
   const req = event.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
